@@ -3,6 +3,7 @@ package randomid
 import (
 	"crypto/rand"
 	"encoding/base64"
+	"errors"
 	"io"
 	"log"
 )
@@ -32,11 +33,11 @@ func GenerateRandomString(s int) (string, error) {
 	return base64.URLEncoding.EncodeToString(b), err
 }
 
-func Generator() string {
-	token, err := GenerateRandomString(6)
+func Generator(n int) string {
+	token, err := GenerateRandomString(n)
 	if err != nil {
-		// Return some error to the user,
-		// but log the details internally.
+		err = errors.New("Could not generate the random string")
+		log.Printf("%v", err)
 	}
 	return token
 }
