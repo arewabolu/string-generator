@@ -6,6 +6,7 @@ import (
 	"errors"
 	"io"
 	"log"
+	"flag"
 )
 
 //GenerateRandomBytes makes a byte slice of len(n)
@@ -41,3 +42,13 @@ func Generator(n int) string {
 	}
 	return token
 }
+
+//You can use a flag to indicate the length of the string 
+/*
+	var length int
+	flag.IntVar(&length,"L",6,"lenght of generated string")
+
+	flag.Parse()
+	genToken:=Generator(length)
+	log.Println(genToken)
+*/
